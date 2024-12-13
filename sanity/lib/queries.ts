@@ -35,3 +35,14 @@ export const STARTUP_WIEVS_QUERY =
   views,
 }
 `);
+
+export const AUTHOR_BY_ID_QUERY =
+  defineQuery(`*[_type == 'author' && id == $id ][0]{
+  _id,
+  id,
+  name,
+  username,
+  image,
+  bio,
+  email
+}`);
