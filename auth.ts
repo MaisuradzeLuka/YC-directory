@@ -7,20 +7,20 @@ import { writeClient } from "./sanity/lib/writeClient";
 export const { signIn, signOut, auth, handlers } = NextAuth({
   providers: [Google],
   callbacks: {
-    async signIn({ profile: { sub: id, name, email, picture } }) {
+    async signIn({ profile }) {
       const existingUser = await client
         .withConfig({ useCdn: false })
         .fetch(AUTHOR_BY_ID_QUERY, {
-          id,
+          id: profile?.sub,
         });
 
       if (!existingUser) {
         await writeClient.create({
           _type: "author",
-          id,
-          name,
-          email,
-          image: picture,
+          id: profile?.sub,
+          name: profile?.name,
+          email: profile?.email,
+          image: profile?.picture,
         });
       }
 
@@ -28,11 +28,13 @@ export const { signIn, signOut, auth, handlers } = NextAuth({
     },
 
     async jwt({ token, account, profile }) {
-      if (account && token) {
-        const user = await client.fetch(AUTHOR_BY_ID_QUERY, {
-          id: profile?.sub,
-        });
-        token.id = user?._id;
+      if (account && profile) {
+        const user = await client
+          .withConfig({ useCdn: false })
+          .fetch(AUTHOR_BY_ID_QUERY, {
+            id: profile?.sub,
+          });
+        token.id = user?.id;
       }
       return token;
     },

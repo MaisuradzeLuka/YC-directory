@@ -18,9 +18,15 @@ const Navbar = async () => {
         <div className="flex gap-8 font-semibold">
           {session ? (
             <>
-              <Link href="#">Create</Link>
+              <Link href="/startup/create/">Create</Link>
               <SignOut />
-              <span>{session?.user?.name}</span>
+              <Image
+                src={`${session?.user?.image}`}
+                width={36}
+                height={36}
+                alt="profile picture"
+                className="rounded-full"
+              />
             </>
           ) : (
             <>
