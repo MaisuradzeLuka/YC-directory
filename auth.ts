@@ -7,6 +7,12 @@ import { writeClient } from "./sanity/lib/writeClient";
 export const { signIn, signOut, auth, handlers } = NextAuth({
   providers: [Google],
   callbacks: {
+    async redirect({ url, baseUrl }) {
+      console.log("Redirect URL:", url);
+      console.log("Base URL:", baseUrl);
+      return baseUrl;
+    },
+
     async signIn({ profile }) {
       const existingUser = await client
         .withConfig({ useCdn: false })
