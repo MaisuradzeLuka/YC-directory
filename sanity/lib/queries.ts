@@ -20,7 +20,7 @@ export const STARTUP_BY_ID_QUERY =
   category,
   slug,
   image,
-  author -> {name, username, bio, _id, image},
+  author -> {name, username, bio, _id, image, email},
   title,
   _id,
   views,

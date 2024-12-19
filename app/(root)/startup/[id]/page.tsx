@@ -23,8 +23,6 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
 
   const parsedContent = md.render(post?.pitch || "");
 
-  console.log(post.description);
-
   return (
     <main>
       <section className="pink_container !min-h-[230px]">
@@ -55,7 +53,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
               <div>
                 <p className="text-20-medium">{post.author.name}</p>
                 <p className="text-16-medium !text-black-300">
-                  @{post.author.email}
+                  {post.author.email}
                 </p>
               </div>
             </div>
