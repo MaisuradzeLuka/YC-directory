@@ -32,16 +32,16 @@ const StartupForm = () => {
 
       const result = await createStartup(prevState, formData, pitch);
 
-      //   if (result.status == "SUCCESS") {
-      //     toast({
-      //       title: "Success",
-      //       description: "Your startup pitch has been created successfully",
-      //     });
+      if (result.status == "SUCCESS") {
+        toast({
+          title: "Success",
+          description: "Your startup pitch has been created successfully",
+        });
 
-      // router.push(`/startup/${result._id}`);
-      //   }
+        router.push(`/startup/${result._id}`);
+      }
 
-      //   return result;
+      return result;
     } catch (error) {
       if (error instanceof z.ZodError) {
         const fieldErorrs = error.flatten().fieldErrors;

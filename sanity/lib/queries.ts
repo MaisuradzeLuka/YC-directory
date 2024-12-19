@@ -10,7 +10,7 @@ export const STARTUP_QUERY =
   title,
   _id,
   views,
-  descriptuon
+  description
 }
 `);
 
@@ -24,7 +24,7 @@ export const STARTUP_BY_ID_QUERY =
   title,
   _id,
   views,
-  descriptuon,
+  description,
   pitch
 }
 `);

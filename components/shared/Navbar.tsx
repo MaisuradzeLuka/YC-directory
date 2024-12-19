@@ -21,7 +21,7 @@ const Navbar = async () => {
               <Link href="/startup/create/">Create</Link>
               <SignOut />
               <Image
-                src={`${session?.user?.image}`}
+                src={`${session?.user?.image || ""}`}
                 width={36}
                 height={36}
                 alt="profile picture"

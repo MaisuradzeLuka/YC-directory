@@ -36,7 +36,7 @@ export const createStartup = async (
       },
       author: {
         _type: "reference",
-        _ref: session,
+        _ref: "103069308756451949273",
       },
       pitch,
     };

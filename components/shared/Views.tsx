@@ -1,7 +1,7 @@
 import { client } from "@/sanity/lib/client";
 import { STARTUP_WIEVS_QUERY } from "@/sanity/lib/queries";
 import { writeClient } from "@/sanity/lib/writeClient";
-import { after } from "next/server";
+import { unstable_after as after } from "next/server";
 
 const Views = async ({ id }: { id: string }) => {
   const { views: totalViews } = await client
